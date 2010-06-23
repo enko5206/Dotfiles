@@ -1,0 +1,25 @@
+# -----------------------------------------------------------------------------#
+# file:                ~/.mpd/config
+# author:              enko
+# last updated:        09/06/2010  
+# -----------------------------------------------------------------------------#
+
+music_directory	       "/mnt/data/Music" 
+playlist_directory     "/home/enko/.mpd/playlists"
+db_file                "/home/enko/.mpd/mpd.db"
+log_file               "/home/enko/.mpd/mpd.log"
+#error_file            "/home/enko/.mpd/mpd.error"
+pid_file               "/home/enko/.mpd/mpd.pid"
+state_file             "/home/enko/.mpd/mpdstate"
+
+user                   "enko"
+
+audio_output {
+	type	       "pulse"
+	name	       "My MPD Pulse Output"
+}
+
+filesystem_charset     "UTF-8"
+id3v1_encoding         "UTF-8"
+
+metadata_to_use        "artist,album,title,track,name,genre,date,composer,performer,disc"

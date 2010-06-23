@@ -1,0 +1,8 @@
+background no
+out_to_console yes
+out_to_x no
+update_interval 1
+total_run_times 0
+
+TEXT
+^fg(\#606060) | ^fg(\#909090)${cpu cpu1}% ${cpu cpu2}%^fg(\#606060) | ^fg(\#909090)${mem}^fg(\#606060) | ^fg(\#909090)${totalup wlan0}^fg(\#606060)^fg(\#909090) ${totaldown wlan0}^fg(\#606060) | ^fg(\#909090)${time %H:%M}^fg(\#606060) |
