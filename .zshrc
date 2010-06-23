@@ -245,7 +245,7 @@ thumb() {
   done
 }
 
-# mp3 в utf
+# mp3 в utf (cd /music/dir && mp32utf)
 mp32utf() { find -iname '*.mp3' -print0 | xargs -0 mid3iconv -eCP1251 --remove-v1 }
 
 # Forismatic
