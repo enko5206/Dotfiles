@@ -166,9 +166,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:processes' command 'ps xua'
 zstyle ':completion:*:processes' sort false
 zstyle ':completion:*:processes-names' command 'ps xho command'
-setopt AUTO_CD                 # если набрали путь к директории без комманды CD, то перейти
-setopt CORRECT_ALL             # исправлять неверно набранные комманды
-setopt histfindnodups          # не хранить дубликаты
+setopt AUTO_CD
+setopt CORRECT_ALL
+setopt histfindnodups
 # }}}
 
 ##### Prompt {{{	
