@@ -1,28 +1,28 @@
-----
--- ~/.xmonad/xmonad.hs
--- author: enko (based on original file by pbrisbin33)
--- last modified: 20/06/2010 
-----
--- /*IMPORTS*/ --
+--------------------------------------------------------------------------------
+--                                                                            --
+-- ~/.xmonad/xmonad.hs                                                        --
+-- author: enko (based on original file by pbrisbin)                          --
+-- last modified: 26/06/2010                                                  --
+--                                                                            --
+--------------------------------------------------------------------------------
 --
--- */actions*/ --
+-- /*IMPORTS*/ -- {{{
 --
+-- actions
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Actions.CycleWindows (rotFocusedUp, rotFocusedDown)
 import XMonad.Actions.UpdatePointer
 import XMonad.Actions.WithAll (killAll,withAll,withAll')
 
--- /*hooks*/ --
--- 
+-- hooks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 
--- /*layout*/ --
---
+-- layout
 import XMonad.Layout.IM
 import XMonad.Layout.LayoutHints (layoutHintsWithPlacement)
 import XMonad.Layout.NoBorders
@@ -31,16 +31,14 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.TwoPane
 
--- /*util*/--
---
+-- util
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Loggers (maildirNew,dzenColorL,wrapL)
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.Scratchpad
 import XMonad.Util.WindowProperties (getProp32s)
 
--- /*other*/ --
---
+-- other
 import Data.List
 import Data.Monoid
 import Data.Ratio
@@ -50,17 +48,19 @@ import System.Exit
  
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
- 
--- /*variables*/ --
 --
+-- }}}
+--
+-- /*STUFF*/ -- {{{
+--
+-- variables
 myTerminal              = "urxvt"
-myWorkspaces            = ["1:main","2:web","3:im","4:DC","5:text"] ++ map show [6..9]
+myWorkspaces            = ["1:main","2:web","3:im","4:text"] ++ map show [6..9]
 myModMask               = mod4Mask
 myBorderWidth           = 0
 myFont                  = "-*-fixed-*-*-*-*-12-*-*-*-*-*-iso10646-*"
 
--- /*tab theme*/ --
---
+-- tab theme
 myTabConfig             = defaultTheme {activeColor         = colorBG
                                        ,inactiveColor 	    = colorBG
                                        ,activeBorderColor   = colorFG
@@ -70,8 +70,7 @@ myTabConfig             = defaultTheme {activeColor         = colorBG
                                        ,fontName            = " ++ myFont ++ "
                                        }
 
--- /*colors*/ --
---
+-- colors
 myNormalBorderColor     = colorBG
 myFocusedBorderColor    = colorFG3
 colorBG                 = "#303030" -- gray
@@ -79,8 +78,10 @@ colorFG                 = "#606060" -- light gray
 colorFG2                = "#909090" -- more light gray
 colorFG3                = "#C4DF90" -- yellow/green
 colorUrg                = "#FFA500" -- orange 
-
--- /*keybindings*/ --
+--
+-- }}}
+--
+-- /*KEYBINDINGS*/ -- {{{
 --
 myKeys = [("M-<Return>", spawn  myTerminal                     ) 
         , ("M-S-m"     , spawn  myMail                         )
@@ -89,7 +90,7 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
         , ("M-w"       , spawn  myWallpapers                   )
         , ("M-S-l"     , spawn  myLock                         )
         , ("M-p"       , spawn  myDmenu                        )
-        , ("M-S-s"     , spawn  myShot                         )
+        , ("<Print>"   , spawn  myShot                         )
 
         , ("M-S-p"     , spawn "gmrun"                         )
         , ("M-f"       , spawn "chromium-browser"              )
@@ -97,10 +98,9 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
         , ("M-g"       , spawn "geany"                         )
         , ("M-`"       , spawn "eject -T /dev/sr0"             )
 
-        , ("M-v"       , spawn "mpc toggle"                    ) 
-        --, ("M-b"       , spawn "mpc stop"                      ) 
-        , ("M-b"     , spawn "mpc prev"                        ) 
-        , ("M-n"     , spawn "mpc next"                        ) 
+        , ("M-v"       , spawn "mpc toggle"                    )  
+        , ("M-b"       , spawn "mpc prev"                      ) 
+        , ("M-n"       , spawn "mpc next"                      ) 
         
         , ("M-<U>"     , spawn "amixer -q set Master 2+ unmute")
 		, ("M-<D>"     , spawn "amixer -q set Master 2- unmute")
@@ -138,8 +138,11 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
                          "xmonad --recompile && xmonad --restart "
           myReboot     = "sudo shutdown -r now"
           myShutdown   = "sudo shutdown -h now"
-                       
--- /*LAYOUTS*/ --
+--
+-- }}}
+--                       
+-- /*LAYOUTS*/ -- {{{
+--
 -- > xprop | grep WM_CLASS
 --
 myLayout = avoidStruts $ smartBorders$ onWorkspace "3:im" imLayout
@@ -164,13 +167,15 @@ myLayout = avoidStruts $ smartBorders$ onWorkspace "3:im" imLayout
     delta           = 3/100
     ratio           = toRational $ 2/(1 + sqrt 5 :: Double) -- golden ratio
     tabs            = hinted (tabbedBottom shrinkText myTabConfig) 
+--
 -- }}}
-
--- ManageHook {{{
+--
+-- /*MANAGEHOOK*/ -- {{{
+--
 myManageHook = (composeAll . concat $
   [ [resource  =? r                 --> doIgnore         |  r    <- myIgnores] -- ignore desktop
   , [className =? c                 --> doShift "2:web"  |  c    <- myWebs   ] -- move webs to web
-  , [className =? c                 --> doShift "5:text" |  c    <- myText   ] -- move to text
+  , [className =? c                 --> doShift "4:text" |  c    <- myText   ] -- move to text
   , [title     =? t                 --> doShift "3:im"   |  t    <- myChats  ] -- move chats to chat
   , [className =? c                 --> doShift "3:im"   | (c,_) <- myIMs    ] -- move chats to chat
   , [className =? c <&&> role /=? r --> doFloat          | (c,r) <- myIMs    ] -- float all ims but roster
@@ -227,8 +232,10 @@ checkType = ask >>= \w -> liftX $ do
   case mbr of
     Just [r] -> return $ elem (fromIntegral r) [m,d,u]
     _        -> return False
- 
--- /*dzen2 statusbars*/ --
+--
+-- }}}
+--
+-- /*DZEN2 STATUSBAR*/ -- {{{
 --
 makeDzen :: Int -> Int -> Int -> Int -> String -> String
 makeDzen x y w h a = "dzen2 -p" ++
@@ -274,15 +281,17 @@ myLogHook h   = (dynamicLogWithPP $ defaultPP
                "Mirror Hinted ResizableTall" -> "/-,-/ "
                "Hinted Tabbed Bottom Simplest" -> "/.../ "
                "Hinted TwoPane" -> "/ / / "
-               "Hinted Full" -> "/ / "
+               "Hinted Full" -> "/  / "
                
                _ -> x ++ " "
                ) . stripIM
  
     stripIM s = if "IM " `isPrefixOf` s then drop (length "IM ") s else s
- 
--- Other -----------------------------------------------------------------------
- 
+--
+-- }}}
+--
+-- /*OTHER*/ -- {{{
+-- 
 -- FadeInactive *HACK* --
 --
 -- you can probably just use the standard:
@@ -316,8 +325,10 @@ instance UrgencyHook MySpawnHook where
  
 -- 'ding!' on urgent (gajim has fairly unnannoying sounds thankfully)
 myUrgencyHook = MySpawnHook "aplay /usr/share/gajim/data/sounds/bounce.wav"
-
--- /*MAIN*/ --
+--
+-- }}}
+--
+-- /*MAIN*/ -- {{{
 --
 main = do
   d <- spawnPipe myStatusBar
@@ -336,3 +347,6 @@ main = do
     , manageHook         = myManageHook
     , logHook            = myLogHook d
     } `additionalKeysP` myKeys
+--
+-- }}}
+
