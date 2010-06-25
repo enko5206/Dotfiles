@@ -89,7 +89,7 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
         , ("M-w"       , spawn  myWallpapers                   )
         , ("M-S-l"     , spawn  myLock                         )
         , ("M-p"       , spawn  myDmenu                        )
-        , ("M-S-s"     , spawn myShot                          )
+        , ("M-S-s"     , spawn  myShot                         )
 
         , ("M-S-p"     , spawn "gmrun"                         )
         , ("M-f"       , spawn "chromium-browser"              )
