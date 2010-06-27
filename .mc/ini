@@ -82,7 +82,11 @@ reverse_files_only=1
 copymove_persistent_attr=1
 select_flags=6
 editor_backup_extension=~
-skin=default
+#skin=default
+skin=darkfar
+#skin=double-lines
+#skin=featured
+#skin=gotar
 keymap=mc.keymap
 auto_save_setup_panels=1
 
@@ -110,7 +114,6 @@ display_codepage=UTF-8
 source_codepage=Other_8_bit
 
 [Colors]
-base_color=normal=lightgrey,black:marked=red,black
 
 xterm=
 color_terminals=
@@ -120,6 +123,8 @@ rxvt-unicode=
 linux=
 
 screen=
+
+base_color=
 
 [Panelize]
 Найти корректуры, отвергнутые командой patch=find . -name \\*.rej -print

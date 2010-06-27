@@ -23,7 +23,7 @@ Xcursor.size:            			 22
 !
 urxvt*font:              			 xft:Consolas:pixelsize=12:antialias=true:hinting=true
 !urxvt*font:              			 xft:Terminus:pixelsize=12:antialias=true:hinting=true
-
+!urxvt*font:              			 xft:Monaco:pixelsize=10:antialias=true:hinting=true
 !
 ! ------------------------------------------------------------------------------
 !

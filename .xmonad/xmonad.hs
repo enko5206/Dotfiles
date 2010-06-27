@@ -93,7 +93,7 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
         , ("<Print>"   , spawn  myShot                         )
 
         , ("M-S-p"     , spawn "gmrun"                         )
-        , ("M-f"       , spawn "chromium-browser"              )
+        , ("M-f"       , spawn "firefox"                       )
         , ("M-d"       , spawn "nautilus --no-desktop"         )
         , ("M-g"       , spawn "geany"                         )
         , ("M-`"       , spawn "eject -T /dev/sr0"             )
