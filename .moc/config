@@ -119,7 +119,7 @@ ShowTime		= IfAvailable
 
 # Theme file. This can be absolute path or relative to
 # /usr/share/moc/themes/ (depends on installation prefix) or ~/.moc/themes/
-Theme			= darkdot_theme
+Theme			= dante_theme
 
 # The theme used when running on on xterm
 #XTermTheme		= transparent-background

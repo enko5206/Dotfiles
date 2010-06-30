@@ -29,7 +29,7 @@ for f in *.jpg *.JPG; do
    # (7)
    DST="${DATETIME}${1}.jpg"
    if [[ $CREATE_DIR == "1" ]]; then DST="$DATE/${DATETIME}${1}.jpg"; fi
-
+   
    # (8)
    mv "$f" "$DST"
 done
