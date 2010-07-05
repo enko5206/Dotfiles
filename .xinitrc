@@ -37,6 +37,7 @@ sleep 5 && trayer --edge bottom --align right --expand true --SetDockType true -
 #
 # and finaly start xmonad
 xmonad
+#scrotwm
 # 
 # all messages added to ~/.xsession-errors
 exec >> $HOME/.xsession-errors 2>&1
