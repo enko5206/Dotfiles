@@ -74,36 +74,27 @@ urxvt.underlineColor:    			 #999999
 ! ------------------------------------------------------------------------------
 !
 ! T H E M E S
+*foreground:                         #a0a0a0
+*background:                         #1B1D1E
 !
-! thayer
 !
-*foreground:             			 #a0a0a0
-*background:             			 #1B1D1E
-!black
-*color0:                 			 #1B1D1E
-*color8:                 			 #505354            
-!red
-*color1:                 			 #F92672
-*color9:                 			 #FF669D
-!green
-*color2:                 			 #A6E22E
-*color10:                			 #BEED5F
-!yellow
-*color3:                 			 #FD971F
-*color11:                			 #E6DB74
-!blue
-*color4:                 			 #66D9EF
-*color12:                			 #66D9EF
-!magenta
-*color5:                 			 #9E6FFE
-*color13:                			 #9E6FFE
-!cyan
-*color6:                 			 #5E7175
-*color14:                			 #A3BABF
-!white
-*color7:                 			 #CCCCC6
-*color15:                			 #F8F8F2
-!
+!#include "/home/enko/.colorscheme/thayer"
+!#include "/home/enko/.colorscheme/zenburn"
+!#include "/home/enko/.colorscheme/red_orange_light"
+!#include "/home/enko/.colorscheme/be_yourself"
+!#include "/home/enko/.colorscheme/bitchin"
+#include "/home/enko/.colorscheme/not4awesome"
+!#include "/home/enko/.colorscheme/skyplum"
+!#include "/home/enko/.colorscheme/tangoesque"
+!#include "/home/enko/.colorscheme/derp"
+!#include "/home/enko/.colorscheme/digerati"
+!#include "/home/enko/.colorscheme/flashy"
+!#include "/home/enko/.colorscheme/middling"
+!#include "/home/enko/.colorscheme/miro"
+!#include "/home/enko/.colorscheme/necromancer"
+!#include "/home/enko/.colorscheme/rezza"
+!#include "/home/enko/.colorscheme/rydgel"
+!#include "/home/enko/.colorscheme/dream"
 ! ------------------------------------------------------------------------------
 !
 ! X M A N

@@ -21,6 +21,7 @@ export LS_COLORS
 # если установлен grc, то им можно раскрасить ещё несколько программ:
 if [ -f /usr/bin/grc ]; then
   alias ping="grc --colour=auto ping"
+  alias cat="grc --colour=auto cat"
   alias traceroute="grc --colour=auto traceroute"
   alias make="grc --colour=auto make"
   alias diff="grc --colour=auto diff"
@@ -134,9 +135,11 @@ alias nc='ncmpcpp'
 alias setbright='sudo setpci -s 00:02.0 F4.B=99'
 alias Xdefaults="xrdb -load ~/.Xdefaults"
 alias rsync='rsync --progress'
+alias sv='sudo vim'
 alias nano='nano -W -m'
 alias ping='ping -c 5'
 # Package manager
+# aptitude:
 alias ,="aptitude"
 alias ,,="apt-get"
 alias ,,,="dpkg"
@@ -154,6 +157,15 @@ alias ,p="sudo aptitude purge"
 alias ,rl="dpkg -l | grep '^rc'"
 alias ,rr="sudo dpkg -l | sudo awk '/^rc/{print $2}' | sudo xargs dpkg -P"
 alias ,pl="sudo dpkg --get-selections >> ~/my_packages.txt"
+# portage:
+#alias ,s="eix"
+#alias ,u="sudo layman -S && sudo eix-sync -W"
+#alias ,uu="sudo emerge -avuDN world"
+#alias ,i="sudo emerge -av"
+#alias ,r="sudo emerge -avC"
+#alias ,cl="sudo emerge --depclean"
+#alias ,rev="sudo revdep-rebuild"
+
 # }}}
 
 ##### Compilation Style {{{
@@ -175,7 +187,8 @@ setopt histfindnodups
 #
 autoload -U colors && colors
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
-SPROMPT='zsh: Заменить '\''%R'\'' на '\''%r'\'' ? [Yes/No/Abort/Edit] '
+#SPROMPT='zsh: Заменить '\''%R'\'' на '\''%r'\'' ? [Yes/No/Abort/Edit] '
+SPROMPT='Ошибка! Вы хотели ввести %r вместо %R? [Yes/No/Abort/Edit] '
 # }}}
 
 ##### Function {{{
@@ -277,3 +290,5 @@ ompload() {
  }
  
 #
+lemerge () { cat /var/log/emerge.log | awk -F: '{print strftime("%c", $1),$2}' | less }
+

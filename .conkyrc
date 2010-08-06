@@ -1,92 +1,110 @@
-# Use Xft?
-use_xft yes
- 
-xftfont font Monaco:style=Bold:pixelsize=14
-xftalpha 0.8
-text_buffer_size 2048
- 
-# Update interval in seconds
+######################
+# - Conky settings - #
+######################
 update_interval 1
-background no
- 
-# This is the number of times Conky will update before quitting.
-# Set to zero to run forever.
 total_run_times 0
- 
-# Create own window instead of using desktop (required in nautilus)
-own_window yes
-own_window_transparent yes
-own_window_type override
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_colour 000000
- 
-# Use double buffering (reduces flicker, may not work for everyone)
+net_avg_samples 1
+cpu_avg_samples 1
+
+imlib_cache_size 0
 double_buffer yes
- 
-# Minimum size of text area
-#minimum_size 180 0
-#maximum_width 200
- 
-# Draw shades?
-draw_shades no
- 
-# Draw outlines?
-draw_outline no
- 
-# Draw borders around text
-draw_borders no
- 
-# Stippled borders?
-stippled_borders 0
- 
-# border margins
-#border_margin 5
-border_inner_margin 5
- 
-# border width
-border_width 1
- 
-# Default colors and also border colors
-color0 light green
-default_color white
-default_shade_color black
-default_outline_color black
- 
-# Text alignment, other possible values are commented
-alignment top_middle
-#alignment top_left
-#alignment top_right
-#alignment bottom_left
-#alignment bottom_right
- 
-# Gap between borders of screen and text
-# same thing as passing -x at command line
-#gap_x 35
-#gap_y 50
-gap_x 0
-gap_y 0
- 
- 
-# Subtract file system buffers from used memory?
 no_buffers yes
- 
-# set to yes if you want all text to be in uppercase
-uppercase no
- 
-# number of cpu samples to average
-# set to 1 to disable averaging
-cpu_avg_samples 2
- 
-# number of net samples to average
-# set to 1 to disable averaging
-net_avg_samples 2
- 
-# Force UTF8? note that UTF8 support required XFT
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont Droid Sans:size=8
 override_utf8_locale yes
- 
-# Add spaces to keep things from moving about? This only affects certain objects.
-use_spacer none
+text_buffer_size 2048
+
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+alignment top_right
+gap_x 25
+gap_y 40
+minimum_size 182 0
+maximum_width 182
+
+default_bar_size 60 8
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+
+default_color cccccc
+
+color0 white
+color1 E07A1F
+color2 white
 
 TEXT
-
-${alignc}${color0}CPU0 ${color}${cpu cpu1}% ${color0} :: CPU1 ${color}${cpu cpu2}% ${color0} :: RAM ${color}${mem} ${color0} :: ROOT ${color}${fs_free /} ${color0} :: HOME ${color}${fs_free /home} ${color0} :: eth0 ${color}${totalup eth0} / ${totaldown eth0}${color0} :: wlan0 ${color}${totalup wlan0} / ${totaldown wlan0} 
+${font Droid Sans:style=Bold:size=8}СИСТЕМА $stippled_hr${font}
+##############
+# - SYSTEM - #
+##############
+${goto 32}Время работы: ${alignr}${color2}${uptime}${color}
+# |--UPDATES
+${goto 32}Обновления: ${alignr}${font Droid Sans:style=Bold:size=8}${color1}${execi 360 aptitude search "~U" | wc -l | tail}${color}${font} ${color2}Пакеты${color}
+# |--GMAIL
+${goto 32}Gmail: ${alignr}${font Droid Sans:style=Bold:size=8}${color0}${execpi 3600 ~/.conkycolors/bin/conkyEmail --servertype=IMAP --servername=imap.googlemail.com -u enko5206@gmail.com -p peterburg --ssl}${color}${font} Новое email(s)
+# |--CPU
+${offset 1}${color0}${font Poky:size=16}P${font}${offset -19}${voffset 9}${cpubar cpu0 4,18}${color}${voffset -16}${goto 32}CPU1: ${font Droid Sans:style=Bold:size=8}${color1}${cpu cpu1}%${font} ${alignr}${font Droid Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 0' | cut -c15-16}°C${color}${font}  ${color2}${cpugraph cpu1 8,50 CE5C00 E07A1F}${color}
+${goto 32}CPU2: ${font Droid Sans:style=Bold:size=8}${color1}${cpu cpu2}%${font} ${alignr}${font Droid Sans:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 1' | cut -c15-16}°C${color}${font}  ${color2}${cpugraph cpu2 8,50 CE5C00 E07A1F}${color}
+# |--MEM
+${color0}${font Poky:size=16}M${font}${color}${goto 32}${voffset -7}RAM: ${font Droid Sans:style=Bold:size=8}${color1}$memperc%${color}${font}
+${offset 1}${voffset 2}${color0}${membar 4,18}${color}${goto 32}${voffset -2}F: ${color2}${memeasyfree}${color} U: ${color2}${mem}${color}
+# |--CPU
+${voffset 2}${color0}${font Poky:size=14}s${font}${color}${voffset -8}${goto 32}SWAP: ${font Droid Sans:style=Bold:size=8}${color1}${swapperc}%${color}${font}
+${voffset 4}${offset 1}${color2}${swapbar 4,18}${color}${voffset -4}${goto 32}F: ${color2}$swapmax${color} U: ${color2}$swap${color}
+# |--BATTERY
+${color0}${font Poky:size=13}E${font}${color}${goto 32}${voffset -5}Батарея: ${font Droid Sans:style=Bold:size=8}${color1}${battery_percent BAT1}%${color}${font} ${alignr}${color2}${battery_bar 8,60 BAT1}${color}
+# |--PROC
+${voffset 2}${color0}${font Poky:size=15}a${font}${color}${goto 32}${voffset -10}Процессы: ${color2}${alignr 13}CPU${alignr}RAM${color}
+${voffset -1}${goto 42}${color2}${top name 1}${color}${font Droid Sans:style=Bold:size=8}${color1} ${goto 124}${top cpu 1}${alignr }${top mem 1}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 2}${color}${font Droid Sans:style=Bold:size=8}${color1} ${goto 124}${top cpu 2}${alignr }${top mem 2}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 3}${color}${font Droid Sans:style=Bold:size=8}${color1} ${goto 124}${top cpu 3}${alignr }${top mem 3}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 4}${color}${font Droid Sans:style=Bold:size=8}${color1} ${goto 124}${top cpu 4}${alignr }${top mem 4}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 5}${color}${font Droid Sans:style=Bold:size=8}${color1} ${goto 124}${top cpu 5}${alignr }${top mem 5}${color}${font}
+###########
+# - MPD - #
+###########
+${voffset 4}${font Droid Sans:style=Bold:size=8}MPD $stippled_hr${font}
+${execpi 10 ~/.conkycolors/bin/conkyMPD}
+###############
+# - NETWORK - #
+###############
+${voffset 4}${font Droid Sans:style=Bold:size=8}СЕТЬ $stippled_hr${font}
+# |--WLAN0
+${if_up wlan0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Отправка: ${font Droid Sans:style=Bold:size=8}${color1}${upspeed wlan0}${color}${font} ${alignr}${color2}${upspeedgraph wlan0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Всего: ${color2}${totalup wlan0}${color}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Приём: ${font Droid Sans:style=Bold:size=8}${color1}${downspeed wlan0}${color}${font} ${alignr}${color2}${downspeedgraph wlan0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Всего: ${color2}${totaldown wlan0}${color}
+${voffset -2}${color0}${font Poky:size=14}Y${font}${color}${goto 32} ${voffset -2}Сигнал: ${font Droid Sans:style=Bold:size=8}${color1}${wireless_link_qual wlan0}%${color}${font} ${alignr}${color2}${wireless_link_bar 8,60 wlan0}${color}
+${voffset 4}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -8}Локальный IP: ${alignr}${color2}${addr wlan0}${color}
+${goto 32}Внешний IP: ${alignr}${color2}${execi 10800 ~/.conkycolors/bin/conkyIp}${color}
+# |--ETH0
+${else}${if_up eth0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Отправка: ${font Droid Sans:style=Bold:size=8}${color1}${upspeed eth0}${color}${font} ${alignr}${color2}${upspeedgraph eth0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Всего: ${color2}${totalup eth0}${color}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Приём: ${font Droid Sans:style=Bold:size=8}${color1}${downspeed eth0}${color}${font} ${alignr}${color2}${downspeedgraph eth0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Всего: ${color2}${totaldown eth0}${color}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}Локальный IP: ${alignr}${color2}${addr eth0}${color}
+${goto 32}Внешний IP: ${alignr}${color2}${execi 10800 ~/.conkycolors/bin/conkyIp}${color}
+# |--PPP0
+${endif}${else}${if_up ppp0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Отправка: ${font Droid Sans:style=Bold:size=8}${color1}${upspeed ppp0}${color}${font} ${alignr}${color2}${upspeedgraph ppp0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Всего: ${color2}${totalup ppp0}${color}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Приём: ${font Droid Sans:style=Bold:size=8}${color1}${downspeed ppp0}${color}${font} ${alignr}${color2}${downspeedgraph ppp0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Всего: ${color2}${totaldown ppp0}${color}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}Локальный IP: ${alignr}${color2}${addr ppp0}${color}
+${endif}${else}${voffset 4}${color0}${font PizzaDude Bullets:size=12}4${font}${color}${goto 32}Сеть недоступна${endif}${endif}

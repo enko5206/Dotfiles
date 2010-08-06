@@ -108,14 +108,7 @@ map = $a <--<Esc>
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
 
-" Выход без сохранения на <F10> во всех режимах
-imap <F10> <Esc>:q!<CR>
-map <F10> <Esc>:q!<CR>
-
-" Вставка из буфера мыши
-map <S-Insert> <Middlemouse>
-
-map <F4>  <esc>:call SWITCHFOLD()<cr>
+map <F4>  <esc>:call SWITCHFOLD()<cr>                                                                                                                                             
 function SWITCHFOLD()
     if &foldmethod=="marker"
         set foldmethod=syntax
@@ -134,6 +127,33 @@ function SWITCHFOLD()
         return
     endif
 endfunction
+
+" F5 - просмотр списка буферов
+nmap <F5> <Esc>:BufExplorer<cr>
+vmap <F5> <esc>:BufExplorer<cr>
+imap <F5> <esc><esc>:BufExplorer<cr>
+
+" F6 - предыдущий буфер
+map <F6> :bp<cr>
+vmap <F6> <esc>:bp<cr>i
+imap <F6> <esc>:bp<cr>i
+
+" F7 - следующий буфер
+map <F7> :bn<cr>
+vmap <F7> <esc>:bn<cr>i
+imap <F7> <esc>:bn<cr>i
+
+" F8 - список закладок
+map <F8> :MarksBrowser<cr>
+vmap <F8> <esc>:MarksBrowser<cr>
+imap <F8> <esc>:MarksBrowser<cr>
+
+" Выход без сохранения на <F10> во всех режимах
+imap <F10> <Esc>:q!<CR>
+map <F10> <Esc>:q!<CR>
+
+" Вставка из буфера мыши
+map <S-Insert> <Middlemouse>
 
 " Полезности для Mutt
 " F1 through F3 re-wraps paragraphs

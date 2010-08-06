@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------#
 # file:                ~/.mpd/config
 # author:              enko
-# last updated:        09/06/2010  
+# last updated:        06/07/2010  
 # -----------------------------------------------------------------------------#
 
 music_directory	       "/mnt/data/Music" 
@@ -15,8 +15,8 @@ state_file             "/home/enko/.mpd/mpdstate"
 user                   "enko"
 
 audio_output {
-	type	       "pulse"
-	name	       "My MPD Pulse Output"
+	type	           "pulse"
+	name	           "My MPD Pulse Output"
 }
 
 filesystem_charset     "UTF-8"

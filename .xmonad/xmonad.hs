@@ -58,7 +58,8 @@ myTerminal              = "urxvt"
 myWorkspaces            = ["1:main","2:web","3:im","4:text"] ++ map show [6..9]
 myModMask               = mod4Mask
 myBorderWidth           = 0
-myFont                  = "-*-fixed-*-*-*-*-12-*-*-*-*-*-iso10646-*"
+-- myFont                  = "-*-fixed-*-*-*-*-12-*-*-*-*-*-iso10646-*"
+myFont                  = "Consolas-8"
 
 -- tab theme
 myTabConfig             = defaultTheme {activeColor         = colorBG
@@ -95,7 +96,7 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
         , ("M-S-p"     , spawn "gmrun"                         )
         , ("M-f"       , spawn "firefox"                       )
         , ("M-d"       , spawn "nautilus --no-desktop"         )
-        , ("M-g"       , spawn "geany"                         )
+        , ("M-g"       , spawn "gvim"                          )
         , ("M-`"       , spawn "eject -T /dev/sr0"             )
 
         , ("M-v"       , spawn "mpc toggle"                    )  
@@ -130,7 +131,7 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
           myChat       =  myTerminal ++ " -e mcabber"
           myMail       =  myTerminal ++ " -e mutt"
           myDmenu      = "dmenu_run -fn '" ++ myFont ++ "' -nb '" ++ colorBG ++ "' -nf '" ++ colorFG ++ "' -sb '" ++ colorFG2 ++ "' -sf '" ++ colorBG ++ "'"
-          myLock       = "gnome-screensaver-command -l"
+          myLock       = "xscreensaver-command -l"
           myShot       = "scrot -c -d -m '%d-%m-%Y_%H%M%S.png' -e 'mv $f /mnt/data/Images/screenshots/'"
           myWallpapers = "feh -r -F -V -d -Z /mnt/data/Images/wallpapers"
           myRestart    = "for pid in `pgrep conky`; do kill -9 $pid; done && " ++
@@ -205,7 +206,7 @@ myManageHook = (composeAll . concat $
                 ["Uzbl","uzbl","Uzbl-core","uzbl-core"] ++
                 ["Google-chrome","Chromium-browser"]
                 
-    myText    = ["Geany"]
+    myText    = ["Gvim"]
     
     -- resources
     myIgnores = ["desktop","desktop_window"]

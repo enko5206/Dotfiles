@@ -25,6 +25,7 @@ BKP_FILES=(
 
 BKP_DIR=(
 .bin
+.colorscheme
 .vim
 )
 #
