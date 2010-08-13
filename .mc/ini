@@ -104,7 +104,7 @@ quick_search_case_sensitive=2
 
 [Layout]
 equal_split=1
-first_panel_size=39
+first_panel_size=49
 message_visible=1
 keybar_visible=1
 xterm_title=1

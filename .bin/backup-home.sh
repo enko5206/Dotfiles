@@ -1,27 +1,14 @@
-#!/bin/sh
-#
-# What to backup. 
-backup_files="/home" #/var/spool/mail /etc /root /boot /opt"
+#!/bin/bash
+filename="`date +%d-%m-%y`.tar.bz2" 
+# у меня бекап происходит на отдельный раздел backup
+cd /mnt/backup/Home-backup
+echo "`date` — Start" >> /mnt/backup/Home-backup/backup.log
+# перечисляете все каталоги и файлы в корневом каталоги которые хотите забекапить
+tar cvpjf $filename /home/enko
+echo "`date` — Finish" >>/mnt/backup/Home-backup/backup.log
+# удаляем бекап двухдневной давности
+day="`date +%d`"
+dday=`echo $day-3|bc -l`
+dfilename="`printf '%02d' $dday`_`date +%m_%y`.tar.bz2" 
+rm /mnt/backup/Home-backup/$dfilename
 
-# Where to backup to.
-dest="/mnt/backup/Home-backup"
-
-# Create archive filename.
-day=$(date +%d-%m-%y)
-archive_file="$day.tgz"
-
-# Print start status message.
-echo "Backing up $backup_files to $dest/$archive_file"
-date
-echo
-
-# Backup the files using tar.
-tar czf $dest/$archive_file $backup_files
-
-# Print end status message.
-echo
-echo "Backup finished"
-date
-
-# Long listing of files in $dest to check file sizes.
-ls -lh $dest

@@ -31,7 +31,7 @@ BKP_DIR=(
 #
 # Backup Where?
 #
-BKP_WHERE=/mnt/data/Git/Dotfiles
+BKP_WHERE=~/Git/Dotfiles
 #
 # Colors
 #
@@ -92,5 +92,5 @@ echo -e  "$green Xmonad $reset"
 	fi
 echo -e  "$blue:: $blue Backup completed $blue:: $green$DAY $TIME"
 echo "$DAY :: $TIME - Backup Completed" >> $BKP_WHERE/backup.log
-echo "cd /mnt/data/Git/Dotfiles && git commit -a && git push origin master"
+echo "cd ~/Git/Dotfiles && git commit -a && git push origin master"
 exit 0
