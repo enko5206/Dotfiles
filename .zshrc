@@ -1,10 +1,10 @@
 #!/bin/zsh
 #
 # Author: enko
-# Last updated: 12/06/2010 
+# Last updated: 12/06/2010
 #
 # #### Options {{{
-#	
+#
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
@@ -96,29 +96,29 @@ bindkey "\eOF" end-of-line
 # }}}
 
 ##### Aliases {{{
-#	
+#
 alias ls='ls -F --color=auto'
-alias lsd='ls -ld *(/)'                           # only show directories
-alias lad='ls -ld .*(/)'                          # only show dot-directories
-alias lsa='ls -a .*(.)'                           # only show dot-files
-alias lsbig='ls -lSh *(.) | head'                 # display the biggest files
-alias lssmall='ls -Sl *(.) | tail'                # display the smallest files
-alias lsnew='ls -rtl *(.) | tail'                 # display the newest files
-alias lsold='ls -rtl *(.) | head'                 # display the oldest files
+alias lsd='ls -ld *(/)' # only show directories
+alias lad='ls -ld .*(/)' # only show dot-directories
+alias lsa='ls -a .*(.)' # only show dot-files
+alias lsbig='ls -lSh *(.) | head' # display the biggest files
+alias lssmall='ls -Sl *(.) | tail' # display the smallest files
+alias lsnew='ls -rtl *(.) | tail' # display the newest files
+alias lsold='ls -rtl *(.) | head' # display the oldest files
 alias ll='ls -ahl --color | more; echo "\e[1;32m --[\e[1;34m Dirs:\e[1;36m `ls -al | egrep \"^drw\" | wc -l` \e[1;32m|\e[1;35m Files: \e[1;31m`ls -al | egrep -v \"^drw\" | grep -v total | wc -l` \e[1;32m]--"'
 alias lls="ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g'" # с цифровым видом прав
-alias mv='nocorrect mv -i'                        # переименование-перемещение c пogтвepжgeнueм без коррекции
-alias cp='nocorrect cp -iR'                       # рекурсивное копирование с подтверждением без коррекции
-alias rm='nocorrect rm -i'                        # удаление с подтверждением без коррекции
-alias rmf='nocorrect rm -f'                       # принудительное удаление без коррекции
-alias rmrf='nocorrect rm -fR'                     # принудительное рекурсивное удаление без коррекции
-alias mkdir='nocorrect mkdir'                    # создание каталогов без коррекции
+alias mv='nocorrect mv -i' # переименование-перемещение c пogтвepжgeнueм без коррекции
+alias cp='nocorrect cp -iR' # рекурсивное копирование с подтверждением без коррекции
+alias rm='nocorrect rm -i' # удаление с подтверждением без коррекции
+alias rmf='nocorrect rm -f' # принудительное удаление без коррекции
+alias rmrf='nocorrect rm -fR' # принудительное рекурсивное удаление без коррекции
+alias mkdir='nocorrect mkdir' # создание каталогов без коррекции
 alias reciso="growisofs -dvd-compat -Z /dev/dvd=" # запись образа
-alias catiso="cat /dev/cdrom > image.iso"         # снять образ диска
+alias catiso="cat /dev/cdrom > image.iso" # снять образ диска
 alias blankcd="growisofs -Z /dev/cdrom=/dev/zero" # или dvd+rw-format -f /dev/dvd # очистить dvd
-alias rec="growisofs -Z /dev/dvd -R -J"           # запись каталога на диск
+alias rec="growisofs -Z /dev/dvd -R -J" # запись каталога на диск
 alias eject='sudo eject /dev/sr0'
-alias mountiso='sudo mount -o loop -t iso9660'    # монтирование iso. mountiso [что] [куда]
+alias mountiso='sudo mount -o loop -t iso9660' # монтирование iso. mountiso [что] [куда]
 alias mountnrg='mount -t udf,iso9660 -o loop,ro,offset=307200' # монтирование nrg. mountnrg [что] [куда]
 alias wget=wget -c –passive-ftp –no-check-certificate
 alias ka='killall'
@@ -136,7 +136,9 @@ alias setbright='sudo setpci -s 00:02.0 F4.B=99'
 alias Xdefaults="xrdb -load ~/.Xdefaults"
 alias rsync='rsync --progress'
 alias sv='sudo vim'
+alias vx='vim ~/.xmonad/xmonad.hs'
 alias nano='nano -W -m'
+alias R='exec zsh'
 alias ping='ping -c 5'
 # Package manager
 # aptitude:
@@ -169,7 +171,7 @@ alias ,pl="sudo dpkg --get-selections >> ~/my_packages.txt"
 # }}}
 
 ##### Compilation Style {{{
-#	
+#
 zmodload zsh/complist
 autoload -Uz compinit
 compinit
@@ -183,12 +185,18 @@ setopt CORRECT_ALL
 setopt histfindnodups
 # }}}
 
-##### Prompt {{{	
+##### Prompt {{{
 #
 autoload -U colors && colors
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
-#SPROMPT='zsh: Заменить '\''%R'\'' на '\''%r'\'' ? [Yes/No/Abort/Edit] '
-SPROMPT='Ошибка! Вы хотели ввести %r вместо %R? [Yes/No/Abort/Edit] '
+
+SPROMPT='zsh: Заменить '\''%R'\'' на '\''%r'\'' ? [Yes/No/Abort/Edit] '
+
+
+
+
+
+
 # }}}
 
 ##### Function {{{
@@ -231,6 +239,11 @@ extract_archive () {
 
 alias ex=extract_archive
 compdef '_files -g "*.gz *.tgz *.bz2 *.tbz *.zip *.rar *.tar *.lha"' extract_archive
+
+# Creates an archive from given directory
+mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
+mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }
 
 # генератор паролей
 function mkpass()
@@ -286,9 +299,24 @@ fi
 
 #
 ompload() {
-     curl -F file1=@"$1" http://omploader.org/upload|awk '/Info:|File:|Thumbnail:|BBCode:/{gsub(/<[^<]*?\/?>/,"");$1=$1;sub(/^/,"\033[0;    34m");sub(/:/,"\033[0m:");print}'
+     curl -F file1=@"$1" http://omploader.org/upload|awk '/Info:|File:|Thumbnail:|BBCode:/{gsub(/<[^<]*?\/?>/,"");$1=$1;sub(/^/,"\033[0; 34m");sub(/:/,"\033[0m:");print}'
  }
  
 #
 lemerge () { cat /var/log/emerge.log | awk -F: '{print strftime("%c", $1),$2}' | less }
+###
+
+
+upinfo ()
+{
+echo -ne "\t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
+}
+
+
+# fast directory change
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
 

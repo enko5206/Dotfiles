@@ -96,7 +96,7 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
         , ("M-S-p"     , spawn "gmrun"                         )
         , ("M-f"       , spawn "firefox"                       )
         , ("M-d"       , spawn "nautilus --no-desktop"         )
-        , ("M-g"       , spawn "gvim"                          )
+        , ("M-g"       , spawn "gedit"                          )
         , ("M-`"       , spawn "eject -T /dev/sr0"             )
 
         , ("M-v"       , spawn "mpc toggle"                    )  
@@ -132,8 +132,8 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
           myMail       =  myTerminal ++ " -e mutt"
           myDmenu      = "dmenu_run -fn '" ++ myFont ++ "' -nb '" ++ colorBG ++ "' -nf '" ++ colorFG ++ "' -sb '" ++ colorFG2 ++ "' -sf '" ++ colorBG ++ "'"
           myLock       = "xscreensaver-command -l"
-          myShot       = "scrot -c -d -m '%d-%m-%Y_%H%M%S.png' -e 'mv $f /mnt/data/Images/screenshots/'"
-          myWallpapers = "feh -r -F -V -d -Z /mnt/data/Images/wallpapers"
+          myShot       = "scrot -c -d -m '%d-%m-%Y_%H%M%S.png' -e 'mv $f /home/enko/Pictures/screenshots/'"
+          myWallpapers = "feh -r -F -V -d -Z /home/enko/Pictures/wallpapers"
           myRestart    = "for pid in `pgrep conky`; do kill -9 $pid; done && " ++
                          "for pid in `pgrep dzen2`; do kill -9 $pid; done && " ++
                          "xmonad --recompile && xmonad --restart "
@@ -251,8 +251,8 @@ makeDzen x y w h a = "dzen2 -p" ++
 
 myDzenGenOpts           = "-fg '" ++ colorFG ++ "' -bg '" ++ colorBG ++ "' -fn '" ++ myFont ++ "' -h '15'"
 myStatusBar             = "dzen2 -x 0 -y 0 -w 970 -ta l " ++ myDzenGenOpts
-myConkyBar              = "conky -c .dzenconkyrc | dzen2 -p -ta r -x 970 -y 0 -w 1280 " ++ myDzenGenOpts
-myMPDBar                = "conky -c .dzenmpdrc | dzen2 -p -ta l -y 785 -w 1280 " ++ myDzenGenOpts
+myConkyBar              = "conky -c .dzenconkyrc | dzen2 -p -ta r -x 970 -y 0 -w 1366 " ++ myDzenGenOpts
+myMPDBar                = "conky -c .dzenmpdrc | dzen2 -p -ta l -y 785 -w 1366 " ++ myDzenGenOpts
  
 myLogHook :: Handle -> X ()
 myLogHook h   = (dynamicLogWithPP $ defaultPP

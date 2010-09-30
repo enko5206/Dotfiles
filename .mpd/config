@@ -4,7 +4,7 @@
 # last updated:        06/07/2010  
 # -----------------------------------------------------------------------------#
 
-music_directory	       "/mnt/data/Music" 
+music_directory	       "/home/enko/Music" 
 playlist_directory     "/home/enko/.mpd/playlists"
 db_file                "/home/enko/.mpd/mpd.db"
 log_file               "/home/enko/.mpd/mpd.log"
