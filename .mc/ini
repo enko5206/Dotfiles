@@ -90,7 +90,7 @@ filepos_max_saved_entries=1024
 
 [Layout]
 equal_split=1
-first_panel_size=42
+first_panel_size=97
 message_visible=1
 keybar_visible=1
 xterm_title=1
@@ -124,6 +124,8 @@ marked=yellow,default
 rxvt-unicode=
 
 color_terminals=
+
+xterm=
 
 [Panelize]
 Найти корректуры, отвергнутые командой patch=find . -name \\*.rej -print
