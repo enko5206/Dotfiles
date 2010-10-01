@@ -189,14 +189,7 @@ setopt histfindnodups
 #
 autoload -U colors && colors
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
-
 SPROMPT='zsh: Заменить '\''%R'\'' на '\''%r'\'' ? [Yes/No/Abort/Edit] '
-
-
-
-
-
-
 # }}}
 
 ##### Function {{{
@@ -311,7 +304,6 @@ upinfo ()
 {
 echo -ne "\t ";uptime | awk /'up/ {print $3,$4,$5,$6,$7,$8,$9,$10}'
 }
-
 
 # fast directory change
 alias ...='cd ../..'
