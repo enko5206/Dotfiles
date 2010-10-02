@@ -96,7 +96,7 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
         , ("M-S-p"     , spawn "gmrun"                         )
         , ("M-f"       , spawn "firefox"                       )
         , ("M-d"       , spawn "nautilus --no-desktop"         )
-        , ("M-g"       , spawn "gedit"                          )
+        , ("M-g"       , spawn "gedit"                         )
         , ("M-`"       , spawn "eject -T /dev/sr0"             )
 
         , ("M-v"       , spawn "mpc toggle"                    )  

@@ -1,63 +1,63 @@
 !-------------------------------------------------------------------------------
-! file: 			~/.Xresources
-! author: 			foo30
-! modified: 			30.08.2010
+! file: 		    	    ~/.Xresources
+! author: 		    	    enko
+! modified: 			    30.08.2010
 ! ------------------------------------------------------------------------------
 !
 ! X F T S E T T I N G S
 !
-Xft.dpi: 			96.0
-Xft.hinting: 			true
-Xft.hintstyle: 			hintslight
-Xft.antialias: 			true
-Xft.rgba: 			none
+Xft.dpi: 			        96.0
+Xft.hinting: 			    true
+Xft.hintstyle: 			    hintslight
+Xft.antialias: 			    true
+Xft.rgba: 			        none
 ! ------------------------------------------------------------------------------
 !
 ! X C U R S O R
 !
-!Xcursor.theme: 		Vanilla-DMZ-AA
-!Xcursor.size: 			22
+!Xcursor.theme: 		    Vanilla-DMZ-AA
+!Xcursor.size: 			    22
 ! ------------------------------------------------------------------------------
 !
 ! X T E R M
 !
-xterm*termName: 		xterm-256color
+xterm*termName: 		    xterm-256color
 xterm*internalBorder: 		0
-xterm*loginShell: 		true
-xterm*scrollBar: 		false
-xterm*cursorBlink: 		false
-xterm*geometry: 		80x23
-xterm*saveLines: 		65535
+xterm*loginShell: 		    true
+xterm*scrollBar: 		    false
+xterm*cursorBlink: 		    false
+xterm*geometry: 		    80x23
+xterm*saveLines: 		    65535
 xterm*dynamicColors: 		on
 xterm*highlightSelection: 	true
-xterm*charClass: 		33:48,35-38:48,39:43,42-47:48,58-59:48,61:48,63-64:48,126:48
-xterm*utf8:                     2
+xterm*charClass: 		    33:48,35-38:48,39:43,42-47:48,58-59:48,61:48,63-64:48,126:48
+xterm*utf8:                 2
 xterm*eightBitInput: 		true
-xterm*faceName: 		terminus:pixelsize=14
-xterm*cursorColor: 		#dcdccc
-xterm*shading: 			30
-xterm*transparent: 		true
+xterm*faceName: 		    terminus:pixelsize=14
+xterm*cursorColor: 		    #dcdccc
+xterm*shading: 			    30
+xterm*transparent: 		    true
 ! ------------------------------------------------------------------------------
 !
 ! C O L O R S E T T I N G S
 !
 !Theme Eighteen
-xterm*color0:  			rgb:00/00/00
-xterm*color1:  			rgb:9e/18/28
-xterm*color2:  			rgb:5c/b2/47
-xterm*color3:  			rgb:96/8a/38
-xterm*color4:  			rgb:41/61/a0
-xterm*color5:  			rgb:9b/76/8e
-xterm*color6:  			rgb:41/91/89
-xterm*color7:  			rgb:be/be/be   
-xterm*color8:  			rgb:66/66/66
-xterm*color9:  			rgb:cf/61/71
-xterm*color10: 			rgb:c5/f7/79
-xterm*color11: 			rgb:ff/f7/96
-xterm*color12:			rgb:41/86/be
-xterm*color13: 			rgb:cf/9e/be
-xterm*color14: 			rgb:71/be/be
-xterm*color15: 			rgb:dd/dd/dd
+xterm*color0:  			    rgb:00/00/00
+xterm*color1:  			    rgb:9e/18/28
+xterm*color2:  			    rgb:5c/b2/47
+xterm*color3:  			    rgb:96/8a/38
+xterm*color4:  			    rgb:41/61/a0
+xterm*color5:  			    rgb:9b/76/8e
+xterm*color6:  			    rgb:41/91/89
+xterm*color7:  			    rgb:be/be/be   
+xterm*color8:  			    rgb:66/66/66
+xterm*color9:  			    rgb:cf/61/71
+xterm*color10: 			    rgb:c5/f7/79
+xterm*color11: 			    rgb:ff/f7/96
+xterm*color12:		    	rgb:41/86/be
+xterm*color13: 			    rgb:cf/9e/be
+xterm*color14: 			    rgb:71/be/be
+xterm*color15: 			    rgb:dd/dd/dd
 !
 ! ------------------------------------------------------------------------------
 

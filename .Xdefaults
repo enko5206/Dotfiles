@@ -1,5 +1,5 @@
 ! ------------------------------------------------------------------------------
-! file: 				         ~/.Xdefaults
+! file: 				             ~/.Xdefaults
 ! author: 			             	 enko
 ! last updated:      				 09.06.2010
 ! ------------------------------------------------------------------------------
@@ -144,8 +144,8 @@ xclipboard.geometry:                		 287x195+993+15
 XClipboard*borderColor:              		 #3F3F3F
 XClipboard*cursorColor:              		 Gray93
 XClipboard*Foreground:               		 #F0DFAF
-XClipboard*Background:               	         #3F3F3F
-XClipboard*form.*.shapeStyle:       	         rectangle
+XClipboard*Background:                       #3F3F3F
+XClipboard*form.*.shapeStyle:     	         rectangle
 ! ------------------------------------------------------------------------------
 !
 ! X L O A D
