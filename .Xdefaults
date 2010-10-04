@@ -49,10 +49,10 @@ urxvt.transparent:       			 false
 urxvt.perl-ext-common:   			 default,matcher,tabbed
 urxvt.perl-lib:          			 /usr/lib/urxvt/perl/
 urxvt.urlLauncher:       			 firefox
-urxvt.matcher.button:    	                 1
+urxvt.matcher.button:    	         1
 ! --
 urxvt.scrollstyle:       			 xterm
-urxvt.tabbed.tabbar-fg:  	                 6
+urxvt.tabbed.tabbar-fg:  	         6
 urxvt.tabbed.tabbar-bg:  			 0
 urxvt.tabbed.tab-fg:     			 6
 urxvt.tabbed.tab-bg:     			 0
@@ -129,9 +129,9 @@ xdiary*foreground:       			 #F0DFAF
 Xmessage*font:           			 -*-terminus-medium-r-*-*-14-*-*-*-*-*-iso10646-*
 Xmessage*background:     			 #3F3F3F
 Xmessage*foreground:     			 #F0DFAF
-Xmessage*form.*.shapeStyle: 	                 rectangle
+Xmessage*form.*.shapeStyle: 	     rectangle
 Xmessage*Scrollbar.width: 			 0
-Xmessage*Scrollbar.borderWidth: 	         0
+Xmessage*Scrollbar.borderWidth: 	 0
 Xmessage*Buttons:        			 Quit
 Xmessage*defaultButton:  			 Quit
 ! ------------------------------------------------------------------------------
