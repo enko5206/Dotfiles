@@ -132,8 +132,8 @@ myKeys = [("M-<Return>", spawn  myTerminal                     )
           myMail       =  myTerminal ++ " -e mutt"
           myDmenu      = "dmenu_run -fn '" ++ myFont ++ "' -nb '" ++ colorBG ++ "' -nf '" ++ colorFG ++ "' -sb '" ++ colorFG2 ++ "' -sf '" ++ colorBG ++ "'"
           myLock       = "xscreensaver-command -l"
-          myShot       = "scrot -c -d -m '%d-%m-%Y_%H%M%S.png' -e 'mv $f /home/enko/Pictures/screenshots/'"
-          myWallpapers = "feh -r -F -V -d -Z /home/enko/Pictures/wallpapers"
+          myShot       = "scrot -c -d -m '%d-%m-%Y_%H%M%S.png' -e 'mv $f /home/enko/Pictures/Screenshots/'"
+          myWallpapers = "feh -r -F -V -d -Z /home/enko/Pictures/Wallpapers"
           myRestart    = "for pid in `pgrep conky`; do kill -9 $pid; done && " ++
                          "for pid in `pgrep dzen2`; do kill -9 $pid; done && " ++
                          "xmonad --recompile && xmonad --restart "
